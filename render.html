@@ -1,0 +1,155 @@
+<html>
+<head>
+<style>
+body {
+	background-color:#FFFFFF;
+	color:#000000;
+}
+</style>
+<script type="text/javascript" src="js/general.js"></script>
+<script type="text/javascript" src="js/base64.js"></script>
+<script type="text/javascript" src="js/serialize.js"></script>
+<script type="text/javascript" src="js/canvas2image.js"></script>
+<script type="text/javascript" src="js/procPlant.js"></script>
+</head>
+<body>
+<canvas id="canvas" width="600" height="600" style="width:600px;height:600px;display:block;position:absolute;top:0px;">Canvas not supported</canvas>
+<div style="width:432px;height:600px;position:absolute;top:0px;left:600px;overflow:auto;"><div style="padding:8px;" id="saved">
+
+</div></div>
+<div style="position:absolute;top:620px;">
+DNA: <input type="text" id="dna" value="" size="40">
+<input type="button" value="GO" onclick="startIt(document.getElementById('dna').value)">
+<textarea id="debug" style="width:100%" rows="12"></textarea>
+</div>
+<script type="text/javascript">
+
+var options = {};
+var p = null;
+var i = 0;
+var xoff = 0;
+var yoff = 0;
+var pass = 0;
+
+window.onload = function() {
+	
+
+};
+
+function startIt(dna,setPass) {
+	i = 0;
+	p = new procPlant(dna);
+	var sri = new serverRequestInterface(this,"r.php");
+	document.getElementById('dna').value = p.DNA.data;
+	pass = setPass?setPass:0;
+	setTimeout("upd()",100);
+};
+
+function upd() {
+	if (p == null) return;
+	
+	p.grow(p.age>=20?10:5);
+	
+	if (p.height < 1200 && p.width < 800 && p.nodeCount < 20000 && !p.maxGrowth) {
+		p.view = 2;
+		p.drawShadow = 0;
+		var b = p.getBounds();
+		
+		p.drawShadow = 1;
+		var b2 = p.getBounds();
+		p.drawShadow = 0;
+		
+		
+		options.leaves = options.bloom = options.darkness = options.snow = options.burnt = options.dead = 0;
+		if (pass == 0) {
+			savePlant(p,b,"a"+pass);
+			savePlant(p,b2,"sh-a"+pass,true);
+		}
+		
+		options.leaves = 1;
+		savePlant(p,b,"l"+pass);
+		savePlant(p,b2,"sh-l"+pass,true);
+		
+		if (pass == 0) { 
+			options.snow = 1;
+			savePlant(p,b,"s"+pass);
+		}
+	
+		options.snow = 0;
+		if (p.getDNA("hasFlowers")) {
+			options.bloom = 1;
+			savePlant(p,b,"f"+pass);
+		}
+			
+		if (pass == 0) { 
+			
+			options.burnt = 1;
+			savePlant(p,b,"b"+pass);
+			
+			options.burnt = 0;
+			options.leaves = 0;
+			options.dead = 1;
+			savePlant(p,b,"d"+pass);
+		}
+		setTimeout("upd()",1000);	
+	} else {
+		pass ++;
+		if (pass < 2) {
+			setTimeout("startIt('"+p.DNA.data+"',"+pass+")",1000);
+		}
+		return;
+	}
+	i++;
+
+}
+
+
+function savePlant(p,b,n,shadow) {
+	if (p == null) return;
+	
+	var tmp = dg("canvas");
+	tmp.width = b.w;
+	tmp.height = b.h;
+	tmp.style.width = b.w+"px";
+	tmp.style.height = b.h+"px";
+			
+	if (tmp.getContext) {
+		var ctx = tmp.getContext('2d');
+		ctx.clearRect(0,0,b.w,b.h);
+		options.finalRender = 1;
+		options.view = 2;
+		
+		if (shadow) {
+			options.drawShadow = 1;
+			p.drawPlant(ctx,0-b.x1,0-b.y1,options);		
+			options.drawShadow = 0;
+		} else {
+
+			options.generateShadowData = 1;
+			p.drawPlant(ctx,0-b.x1,0-b.y1,options);				
+			options.generateShadowData = 0;
+			
+			p.drawPlant(ctx,0-b.x1,0-b.y1,options);
+		}
+		
+		var sri = new serverRequestInterface(this,"r.php");
+		
+		var scale = shadow?4: 2;
+		if (scale != 1) {
+			
+			var sIm = document.createElement('canvas');
+			sIm.setAttribute('width',Math.floor(b.w/scale));
+			sIm.setAttribute('height',Math.floor(b.h/scale));
+			var sImCtx = sIm.getContext('2d');
+			sImCtx.drawImage(ctx.canvas,0,0,Math.floor(b.w/scale),Math.floor(b.h/scale));
+		}
+	
+		sri.request("save_plant",{dna:p.DNA.data,opt:n+"-"+p.age,img:scale != 1?sIm.toDataURL():ctx.canvas.toDataURL(),shadow:shadow?1:0,scale:scale,x:Math.round(0-b.x1)/scale,y:Math.round(0-b.y1)/scale},function(response,v,ob){
+			
+		});
+	}
+};
+
+</script>
+</body>
+</html>

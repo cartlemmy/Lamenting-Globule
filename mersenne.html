@@ -1,0 +1,16 @@
+<html>
+<head>
+<script type="text/javascript" src="js/mersenne.source.js"></script>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<textarea id="d" rows=30 cols=25></textarea>
+<script type="text/javascript">
+
+var r = new mersenne(2);
+
+for (var i = 0; i < 30; i++) {
+	document.getElementById('d').value += r.rand()+"\n";
+}
+
+</script>
+</body></html>

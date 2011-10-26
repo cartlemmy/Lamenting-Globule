@@ -1,0 +1,99 @@
+==lgGUI==
+''lgGUI'' is the lamenting globule class that handles the [wiki]graphical user interface[/wiki].
+[section]
+===createDialouge===
+[codedefine lang='javascript' vars='view,handle']Number handle lgGUI.createDialouge(Object view);[/codedefine]
+Creates on of the predefined dialouges.
+
+====Returns====
+The gui element's [codevar]handle[/codevar]
+
+====Dialouges====
+[table width=99%]
+[tr][td]'''Name'''[/td][td]'''Description'''[/td][td]'''Parameters'''[/td][/tr]
+[tr][td]fileOpen[/td][td]Creates a dialouge that allows opening of a file / multiple files.[/td][td]''folder'' - The name of the folder the dialouge starts in
++ all treeView parameters.[/td][/tr]
+[/table]
+
+----
+
+===createView===
+[codedefine lang='javascript' vars='view,handle']Number handle lgGUI.createView(Object view);[/codedefine]
+
+====Returns====
+The gui element's [codevar]handle[/codevar]
+
+====Parameters====
+[table width=99%]
+[tr][td]'''Parameter'''[/td][td]'''Description'''[/td][/tr]
+[tr][td]String [codevar]view.viewType[/codevar][/td][td]The type of the view
+[table width=99%]
+[tr][td]alert[/td][td]A pop up that shows over the entire browser window, greying out the background.[/td][/tr]
+[/table]
+Cannot be used in conjunction with [codevar]view.parentElement[/codevar].
+[/td][/tr]
+[tr][td]Element [codevar]view.parentElement[/codevar][/td][td]The element the view will be appended to. Cannot be used in conjunction with [codevar]view.viewType[/codevar].[/td][/tr]
+[tr][td]Function [codevar]view.callback[/codevar][/td][td]The function that gets called when view events are fired.[/td][/tr]
+[/table]
+
+----
+
+===createTreeView===
+[codedefine lang='javascript' vars='view']lgGUI.createTreeView(Object view);[/codedefine]
+[codevar]view[/codevar] contains all of the parameters and data of the view
+[table width=99%]
+[tr][td]'''Parameter'''[/td][td]'''Description'''[/td][/tr]
+[tr][td]Boolean [codevar]view.clickToChoose[/codevar][/td][td]If set then clicking on an item chooses it instead of just highlighting it.[/td][/tr]
+[tr][td]Boolean [codevar]view.allowMultipleSelect[/codevar][/td][td]If set then it will be possible to select multiple items.[/td][/tr]
+[tr][td]Object [codevar]view.filter[/codevar][/td][td]See Filters. Possible filters for creatTreeView are ''display'', and ''selectable''.[/td][/tr]
+[tr][td colspan='2']Also, [jump]createView[/jump]'s parameters apply as well[/td][/tr]
+[/table]
+
+====Returns====
+The tree view's element.
+
+----
+
+===filter===
+[codedefine lang='javascript' vars='dataObject,filter']lgGUI.filter(Object dataObject, String filter);[/codedefine]
+[codevar]dataObject[/codevar] is the [url=?data-object]dataObject[/url] to be tested.
+[codevar]filter[/codevar] is the filter to be used.
+
+====Returns====
+True if the filter passes
+
+====Predefined Filters====
+[table width=99%]
+[tr][td]'''Syntax'''[/td][td]'''Description'''[/td][/tr]
+[tr][td]file-ext:''ext''[/td][td]Matches only items with the file extension of ''ext''[/td][/tr]
+[tr][td]mime-type:''mime''[/td][td]Matches only items with the mime type of ''mime''. You can specify just the type (mime-type:text) or both type and subtype (mime-type:text/plain)[/td][/tr]
+[/table]
+
+----
+
+===remove===
+[codedefine lang='javascript' vars='handle']lgGUI.remove(Number handle);[/codedefine]
+Removes the GUI element specified by [codevar]handle[/codevar]
+
+----
+
+===parseLayout===
+[codedefine lang='javascript' vars='layout']lgGUI.parseLayout(Object layout);[/codedefine]
+Parses a [codevar]layout[/codevar] object into HTML.
+
+====Returns====
+A string containing the parsed HTML code.
+
+===parseLayout EXAMPLE===
+[code lang='javascript']
+gui.parseLayout (document.body, 
+	[
+		{t:"head",data:"Heading"},
+		{t:"cont",data:[
+			{t:"head",data:"Testing a head in a container"},
+			{t:"text",data:"Testing text"}
+		]}
+	]
+);
+[/code]
+[/section]

@@ -1,0 +1,34 @@
+==lgCompress==
+''lgCompress'' is the lamenting globule class that handles object compression and decompression.
+It primarily uses a simple [wiki]LZW[/wiki] compression alogrithm.
+[section]
+===compress===
+[codedefine lang='javascript' vars='uncompressed,compressionAlg']lgCompress.compress(Mixed uncompressed[, String compressionAlg]);[/codedefine]
+Compresses (and [wiki=Serialization]serializes[/wiki] if it is not a string) the [codevar]uncompressed[/codevar] object into a string.
+
+[codevar]compressionAlg[/codevar] is the compression algorithm to use. Defaults to "lzw". (See chart at end of this section.)
+
+====Returns====
+A string containing the compressed object.
+
+----
+
+===decompress===
+[codedefine lang='javascript' vars='compressed,compressionAlg']lgCompress.decompress(String compressed[, String compressionAlg]);[/codedefine]
+Decompresses the [codevar]compressed[/codevar] string its original form.
+
+[codevar]compressionAlg[/codevar] is the compression algorithm to use. Defaults to "lzw". (See chart at end of this section.)
+
+====Returns====
+The uncompressed object, '''false''' if it is an invalid compressed string.
+
+----
+
+===compressionAlg===
+'''lzw''' - the [wiki]LZW[/wiki] algorithm.
+'''lgml''' - A variant of the [wiki]LZW[/wiki] algorithm that compresses [url=?lgml]LGML[/url] even further.
+'''html''' - A variant of the [wiki]LZW[/wiki] algorithm that compresses [url=?lgml]HTML[/url] even further.
+
+===EXAMPLE===
+[example]example-compress.php[/example]
+[/section]

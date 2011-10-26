@@ -1,0 +1,10 @@
+==General Lamenting Globule Fuctions==
+general.js contains the generic and helper functions of Lameting Globule. Most are not part of a class, and can be accessed as such.
+[section]
+===dg===
+[codedefine lang='javascript' vars='element,id,parent,type,attributes,prepend']Object element dg(String id, Object parent, String type, Object attributes, Boolean prepend);[/codedefine]
+Shorthand for document.getElementById, with extra functionality for creating an element when it does not exist.
+
+====Returns====
+The existing element got by id, or the newly created element (if applicable).
+[/section]

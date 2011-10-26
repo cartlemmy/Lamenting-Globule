@@ -1,0 +1,10 @@
+// Lamenting Globule 0.0 (Apathetic Amoeba)
+// Core Engine
+// lg.core
+// (c) 2011 Josh "CartLemmy" Merritt
+// cartlemmy@gmail.com
+// http://www.yibbleware.com
+
+
+function lgCore(o){this.anch=new createAnchor(this);this.setOptions=function(o){for(i in o){var n="set"+i.charAt(0).toUpperCase()+i.substr(1);if(this[n]){this[n](o[i])}else{this[i]=o[i]}}};this.setFpsMax=function(a){this.fpsMax=a;this.fpsMaxMS=1000/a};this.requestAnimationFrame=function(a,b){if(b===false){window.setTimeout(this.anch.callbackCode(a),200)}else{eval("var cb = this."+a+";");if(!window.requestAnimationFrame(cb)){window.setTimeout(this.anch.callbackCode(a),b)}}};this.setOptions({ctx:null,renderer:null,render:false,frame:0,fpsBuffer:[],fps:0,fpsMax:30,lastGraphicsUpdate:unixTS(true),lastPhysicsUpdate:unixTS(true),physicsInterval:15});this.graphicsUpdate=function(){if(this.render){var a=unixTS(true)-this.lastGraphicsUpdate;this.lastGraphicsUpdate=unixTS(true);this.fpsBuffer[frame&63]=a;this.frame++;if((this.frame&63)==0){var n=0,t=0;for(var i=0;i<64;i++){if(this.fpsBuffer[i]){n+=1/this.fpsBuffer[i];t++}}this.fps=Math.round(n/t)}if(this.renderer&&this.ctx){this.renderer.draw(this.ctx)}}};this.physicsUpdate=function(){};if(o){this.setOptions(o)}};var lgCoreRef=null;function lgCoreAnimate(){lgCoreRef.graphicsUpdate();requestAnimationFrame(lgCoreAnimate)};function lgCorePhysicsUpdate(){var a=unixTS(true);var t=a-lgCoreRef.lastPhysicsUpdate;lgCoreRef.lastPhysicsUpdate=a;lgCoreRef.physicsUpdate(t);setTimeout(lgCorePhysicsUpdate,lgCoreRef.physicsInterval)};function lgCoreRegister(a){lgCoreRef=a;lgCoreAnimate();lgCorePhysicsUpdate()};window.requestAnimationFrame=(function(){//@paul_irish function
+return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||function(a,b){window.setTimeout(a,1000/60)}})();

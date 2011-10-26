@@ -1,0 +1,18 @@
+==Lamenting Globule Voxel Editor==
+The Lamenting Globule Voxel Editor allows you to paint and animate models made of voxels, which can then be rendered into a 2d image, or sprite sheet.
+
+==Keyboard Shortcuts==
+[section]
+[table]
+[tr][td]'''Key(s)'''[/td][td]'''Action'''[/td][/tr]
+[tr][td]''hold'' SPACEBAR + ''move mouse''[/td][td]Pans view[/td][/tr]
+[tr][td]M[/td][td]Toggles the display of the axis labels[/td][/tr]
+[tr][td]L[/td][td]Toggles the display of all layers[/td][/tr]
+[tr][td]+[/td][td]Zoom in[/td][/tr]
+[tr][td]-[/td][td]Zoom out[/td][/tr]
+[tr][td]DELETE[/td][td]Delete the currently selected voxel(s)[/td][/tr]
+[tr][td]A and D[/td][td]Move the currently selected voxel(s) along the x axis[/td][/tr]
+[tr][td]W and S[/td][td]Move the currently selected voxel(s) along the y axis[/td][/tr]
+[tr][td]R and F[/td][td]Move the currently selected voxel(s) along the z axis[/td][/tr]
+[/table]
+[/section]

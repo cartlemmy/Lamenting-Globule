@@ -1,0 +1,27 @@
+==lgVectimage==
+''lgVectimage'' is the lamenting globule class that is used to create a vector image from a JSON object.
+
+[section]
+===setCtx===
+[codedefine lang='javascript' vars='ctx']lgVectimage.setCtx(CanvasContext ctx);[/codedefine]
+Sets the drawing context.
+
+[codevar]ctx[/codevar] is the canvas context.
+
+----
+
+===setData===
+[codedefine lang='javascript' vars='data']lgVectimage.setData(Mixed data);[/codedefine]
+Sets the drawing data.
+
+[codevar]data[/codevar] is the data.
+
+----
+
+===render===
+[codedefine lang='javascript']lgVectimage.render();[/codedefine]
+Renders the image to the context specified with [jump]setCtx[/jump].
+
+----
+
+[/section]

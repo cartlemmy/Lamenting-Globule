@@ -1,0 +1,104 @@
+==Lamenting Globule Markup Language (LGML)==
+[section]
+Lamenting Globule Layouts can also be parsed from LGML, which is based on [wiki]BBCode[/wiki] and [wiki=Help:Wiki_markup]Wiki markup[/wiki]. LGML is intentionally light weight and meant to be easily readable, and manageable in its source form.
+
+This entire manual was created with LGML.
+
+===Tags===
+[table width=99%]
+[thead][tr][td]'''Tag'''[/td][td]'''Description'''[/td][td]'''Effect'''[/td][/tr][/thead]
+[tbody]
+[tr][td][pre][head]HEAD[/head]
+or
+&#61;&#61;HEAD&#61;&#61;[/pre][/td][td]Heading[/td][td][head]HEAD[/head][/td][/tr]
+[tr][td][pre][subhead]SUB-HEAD[/subhead]
+or
+&#61;&#61;&#61;SUB-HEAD&#61;&#61;&#61;[/pre][/td][td]Sub Heading[/td][td][subhead]SUB-HEAD[/subhead][/td][/tr]
+[tr][td][pre][subsubhead]SUB-SUB-HEAD[/subsubhead]
+or
+&#61;&#61;&#61;&#61;SUB-SUB-HEAD&#61;&#61;&#61;&#61;[/pre][/td][td]Smaller Sub Heading[/td][td][subsubhead]SUB-SUB-HEAD[/subsubhead][/td][/tr]
+[tr][td][pre][jump]Some Head[/jump][/pre][/td][td]Creates a link that will jump to a [lit][head][/lit], [lit][subhead][/lit], or [lit][anch][/lit] of the same name.[/td][td]N/A[/td][/tr]
+[tr][td][pre][jump href=otherpage.html]Some Head[/jump][/pre][/td][td]Creates a link that will jump to a [lit][head][/lit], [lit][subhead][/lit], or [lit][anch][/lit] of the same name, but on a different page.[/td][td]N/A[/td][/tr]
+[tr][td][pre][anch]Some Anchor[/anch][/pre][/td][td]And invisible anchor than can be linked to by a jump tag.[/td][td]N/A[/td][/tr]
+[tr][td][pre][section]Section[/section][/pre][/td][td]Creates a sectioned container around the content.[/td][td][section]Section[/section][/td][/tr]
+[tr][td][pre][page][/pre][/td][td]Forces a page-break for the printable version.[/td][td]N/A[/td][/tr]
+[tr][td][pre][b]bolded text[/b]
+or
+&#39;&#39;&#39;bolded text&#39;&#39;&#39;[/pre][/td][td]Bold[/td][td][b]bolded text[/b][/td][/tr]
+[tr][td][pre][i]italicized text[/i]
+or
+&#39;&#39;italicized text&#39;&#39;[/pre][/td][td]Italic[/td][td][i]italicized text[/i][/td][/tr]
+[tr][td][pre][u]underlined text[/u][/pre][/td][td]Underlined[/td][td][u]underlined text[/u][/td][/tr]
+[tr][td][pre][s]strikethrough text[/s][/pre][/td][td]Strikethrough[/td][td][s]strikethrough text[/s][/td][/tr]
+[tr][td][pre][url]http://example.org[/url][/pre][/td][td]URL[/td][td][url]http://example.org[/url][/td][/tr]
+[tr][td][pre][url=http://example.com]Example[/url][/pre][/td][td]URL with differring link text[/td][td][url=http://example.com]Example[/url][/td][/tr]
+[tr][td][pre][img]http://upload.wikimedia
+.org/wikipedia/en/5/50/
+NES_Super_Mario_Bros.png[/img][/pre][/td][td]Image[/td][td][img]http://upload.wikimedia.org/wikipedia/en/5/50/NES_Super_Mario_Bros.png[/img][/td][/tr]
+[tr][td][pre][wiki]Wiki[/wiki][/pre][/td][td]Links to related Wikipedia article[/td][td][wiki]Wiki[/wiki][/td][/tr]
+[tr][td][pre][wiki=Uninterruptible_power_supply]
+UPS[/wiki][/pre][/td][td]Links to related Wikipedia article of a different name[/td][td][wiki=Uninterruptible_power_supply]UPS[/wiki][/td][/tr]
+[tr][td][pre][youtube width=256 height=180]
+pBjZjJD3i8Y
+[/youtube][/pre][/td][td]Embeds a Youtube video[/td][td][youtube width=256 height=180]pBjZjJD3i8Y[/youtube][/td][/tr]
+[tr][td][pre][quote]quoted text[/quote][/pre][/td][td]Quoted Text[/td][td][quote]quoted text[/quote][/td][/tr]
+[tr][td][pre][pre]monospaced text[/pre][/pre][/td][td]Preserves tabs, spaces, and line breaks.[/td][td][pre]monospaced text[/pre][/td][/tr]
+[tr][td][pre][code]monospaced text[/code][/pre][/td][td]Preserves tabs, spaces, and line breaks (with border).[/td][td][code]monospaced text[/code][/td][/tr]
+[tr][td][pre][code lang='java']
+public class NumberFactorial {
+	 
+	public static void ma...
+		 
+		int number = 5;
+		 
+		/*
+		* Factorial of an...
+		* For example, fa...
+		*/
+		 
+		int factorial = n...
+		 
+		for(int i =(numbe...
+		{
+			factorial = f...
+		}
+		 
+		System.out.printl...s
+	}
+}
+[/code][/pre][/td][td]Formats code with syntax highlighting via [wiki]GeSHi[/wiki].[/td][td][code lang='java']
+public class NumberFactorial {
+	 
+	public static void main(String[] args) {
+		 
+		int number = 5;
+		 
+		/*
+		* Factorial of any number is !n.
+		* For example, factorial of 4 is 4*3*2*1.
+		*/
+		 
+		int factorial = number;
+		 
+		for(int i =(number - 1); i > 1; i--)
+		{
+			factorial = factorial * i;
+		}
+		 
+		System.out.println("Factorial of a number is " + factorial);
+	}
+}
+[/code][/td][/tr]
+[tr][td][pre][size=20px]Large Text[/size][/pre][/td][td]Sets the size of the text[/td][td][size=20px]Large Text[/size][/td][/tr]
+[tr][td][pre][color=red]Red Text[/color]
+or
+[color=#FF0000]Red Text[/color][/pre][/td][td]Sets the color of the text[/td][td][color=red]Red Text[/color][/td][/tr]
+[tr][td][pre][table][tr][td]c1[/td]
+[td]c2[/td][/tr][/table][/pre][/td][td]Creates a table[/td][td][table][tr][td]c1[/td][td]c2[/td][/tr][/table][/td][/tr]
+[tr][td][pre][clear][/pre][/td][td]Keeps previous layout from flowing into the next. Same as:
+[code lang='xml']
+<div style="clear:both"></div>
+[/code][/td][td]N/A[/td][/tr]
+[/tbody]
+[/table]
+[/section]

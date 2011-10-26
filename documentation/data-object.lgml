@@ -1,0 +1,32 @@
+[page]==DATA OBJECT==
+[section]
+Each data object consists of an object containing data elements.
+[code lang='javascript']
+{
+	name:["bob","s"],
+	created:[1306862153,"ts"]
+}
+[/code]
+
+===DATA ELEMENT===
+Each data element is an array whose first element is the data, and second element defines the type of data.
+[code lang='javascript']
+[data,primativeType,extra] // This is the basic data element structure
+[/code]
+'''data''' is the raw data
+'''primativeType''' is the primative data type (see chart below)
+'''extra''' (optional) is extra information that differs for each primativeType
+
+===PRIMATIVE TYPES===
+[code]
+s = string
+n = number
+b = boolean
+i = index (numeric)
+k = index (string)
+ts = unix timestamp
+mime = mime type
+bytes = bytes (8-bit)
+collection = a collection (array) of data elements
+[/code]
+[/section]

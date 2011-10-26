@@ -1,0 +1,77 @@
+<script type="text/javascript" src="js/general.js"></script>
+<script type="text/javascript" src="js/base64.js"></script>
+<script type="text/javascript" src="js/serialize.js"></script>
+<script type="text/javascript" src="js/canvas2image.js"></script>
+<script type="text/javascript" src="js/lgre.js"></script>
+<canvas id="canvas0" width="300" height="200" style="width:300px;height:200px;display:block;position:absolute;top:0px;">
+Your browser does not support canvas.
+<a href="http://www.google.com/chrome/" target="_blank">Google Chrome</a>, 
+<a href="http://www.mozilla.com/en-US/firefox/fx/" target="_blank">Firefox</a>, and
+<a href="http://www.apple.com/safari/" target="_blank">Safari</a> all support cavas.
+Feel free to check 'em out.
+</canvas>
+<canvas id="canvas1" width="300" height="200" style="width:300px;height:200px;display:none;position:absolute;top:0px;">
+Your browser does not support canvas.
+<a href="http://www.google.com/chrome/" target="_blank">Google Chrome</a>, 
+<a href="http://www.mozilla.com/en-US/firefox/fx/" target="_blank">Firefox</a>, and
+<a href="http://www.apple.com/safari/" target="_blank">Safari</a> all support cavas.
+Feel free to check 'em out.
+</canvas>
+<script type="text/javascript">
+
+var keyDown = Object();
+var tm = null;
+var frame = 0;
+var curTS = unixTS(true);
+
+var canvasRatio = document.getElementById('canvas0').offsetWidth / document.getElementById('canvas0').offsetHeight;
+
+window.onload = function() {
+	tm = new tileMap(0,40,0,1,{tileSize:16,shading:"gradient"});
+	tm.initTileFetcher("tile-sheet",{
+		tileSize:32,
+		src:"images/tile_sheet.gif",
+		//src:"images/solid.gif",
+		getTileNumberForPoint:function(x,y){
+			return (y*19)+(x%19);
+		}
+	});
+	setTimeout("upd()", 33);
+	resizeCanvas();
+};
+
+function resizeCanvas() {
+	c0 = document.getElementById('canvas0');
+	c1 = document.getElementById('canvas1');
+	
+	var h = c1.parentNode.offsetHeight;
+	var w = c1.parentNode.offsetHeight*canvasRatio;
+	
+	c0.style.width = c1.style.width = w+"px";
+	c0.style.height = c1.style.height = h+"px";
+};
+
+function upd() {
+	if (tm == null) return;
+	curTS = unixTS(true);
+	var canvas = document.getElementById('canvas'+(frame&1));
+	if (canvas.getContext) {
+		var ctx = canvas.getContext('2d');
+		//ctx.fillStyle = "#000";
+		//ctx.fillRect(0, 0, 600, 600);
+		
+		document.getElementById('canvas'+(frame&1)).style.display = "block";
+		document.getElementById('canvas'+((frame&1)^1)).style.display = "none";
+				
+		tm.draw(ctx);
+		
+		//ctx.drawImage(tm.rowCache[0].ctx.canvas,0,0);
+		
+		//alert(tm.rowCache[0].ctx.canvas.width);
+		frame++;
+	}
+	setTimeout("upd()", 50);
+}
+
+</script>
+

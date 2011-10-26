@@ -1,0 +1,53 @@
+==Lamenting Globule==
+[img alt='Lamenting Globule Logo' align='right']images/lamenting-globule-logo.png[/img]Lamenting Globule is a JavaScript library intended to aid in the design of [wiki]HTML5[/wiki] games, though there are numerous other applications. It also enables [wiki=Ajax_(programming)]ajax[/wiki] interfaces that are very lightweight on the server side.
+[clear]
+
+==Reference==
+[section]
+===Classes===
+[url=?lgGeneral]General Lamenting Globule Fuctions[/url]
+[url=?lgCompress]lgCompress[/url]
+[url=?lgGui]lgGui[/url]
+
+===Other===
+[url=?data-object]DATA OBJECT[/url]
+[url=?lgml]Lamenting Globule Markup Language (LGML)[/url]
+[/section]
+
+==Games / Applications==
+Below are examples of implementations of Lamenting Globule.
+[section]
+===Games===
+None Yet...
+
+===Applications===
+[url=http://www.yibbleware.com/lamenting-globule.html target=_blank]2.5d Demo[/url] - A demo of the 2.5d Top Down Rendering Engine
+[url=LGVoxel.php target=_blank]LGVoxel[/url] - A voxel editor and animator.
+[/section]
+
+==Download???==
+[section]
+Lamenting Globule is still a work in progress, and I haven't decided what sort of a license to release it under. So no downloads yet...
+[/section]
+
+==Contributions==
+Lamenting Globule wouldn't be possible without the help of others
+[section]
+===php.js===
+A few very useful functions are from php.js.
+[url target=_blank]http://phpjs.org/[/url]
+
+===GeSHi===
+Code highlighting is provided by GeSHi.
+[url target=_blank]http://qbnz.com/highlighter/[/url]
+
+===Mersenne Twister===
+[url target=_blank]http://en.wikipedia.org/wiki/Mersenne_twister[/url]
+
+===LZW===
+More specifically the javascript implementation by [url=http://marklomas.net/ target=_blank]Mark Lomas[/url]
+[url target=_blank]http://en.wikipedia.org/wiki/Lempel-Ziv-Welch[/url]
+[url target=_blank]http://marklomas.net/ch-egg/articles/lzwjs.htm[/url]
+
+
+[/section]

@@ -1,0 +1,106 @@
+body, td {
+	font-size:12px;
+	font-family:arial;
+}
+table {
+	border-collapse:collapse;
+}
+.lgmltd {
+	border:1px solid #DDDDDD;
+	background-color:#F8F8F8;
+	padding:3pt;	
+}
+.head {
+	font-size:160%;
+	font-weight:bold;
+	color:#333366;
+}
+.subhead {
+	font-size:120%;
+	font-weight:bold;
+	color:#333366;
+}
+.subsubhead {
+	font-weight:bold;
+}
+.section {
+	border:1px solid #CCCCCC;
+	padding:6pt;
+	margin-bottom:6pt;
+}
+.codedefine {
+	font-size:125%;
+	padding:6px 6pt 6pt 12pt;
+	background-image:url('images/codedefine.png');
+	background-repeat:no-repeat;
+	background-position:left center; 
+	font-family:monospace;
+}
+.codevar {
+	font-weight:bold;
+	font-style:italic;
+	font-family:monospace;
+}
+.code {
+	border:1px dashed #9999FF;
+	background-color:#F8F8FF;
+	padding:6pt;
+	font-family:monospace;
+}
+.tabspan {
+    display:block;
+    width:4ex;
+}
+.page {
+	page-break-before: always;
+}
+.mlc { 
+	background-color:#FFFFFF;
+	padding:10pt;
+	max-width:8in;
+}
+.ml {
+	font-size:150%;
+}
+.toolGroup {
+	border:1px dotted #CCCCCC;
+	border-width:1px 0px 1px 0px;
+	padding:2px;
+	margin-bottom:4px;
+}
+
+.lgTVTable {
+	border-collapse:collapse;
+}
+
+.lgTVHeadTr {
+}
+
+.lgTVHeadTd {
+	padding:2px 8px 2px 8px;
+	border:1px solid #DDDDDD;
+	font-weight:bold;
+}
+
+.lgTVBodyTr {
+	border:1px solid #DDDDDD;
+}
+
+.lgTVBodyTrOdd {
+	background-color:#E8E8FF;
+}
+
+.lgTVBodyTd {
+	padding:2px 8px 2px 8px;
+}
+
+.lgTVBranch {
+	width:16px;
+	height:16px;
+	overflow:hidden;
+	background-image:url(images/tree.png);
+}
+
+.lgTVBranchExpand {
+	background-position:-16 0;	
+}
